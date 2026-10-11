@@ -1,0 +1,4 @@
+interface:
+  display_name: "Monash Moodle"
+  short_description: "Check Monash deadlines, grades and assessment requirements"
+  default_prompt: "Use $monash-moodle to check my upcoming Moodle deadlines and report the sources and timezone."
