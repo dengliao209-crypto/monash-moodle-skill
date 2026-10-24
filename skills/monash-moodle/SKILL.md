@@ -15,6 +15,7 @@ Use upstream `moodle-cli` to answer questions about the user's enrolled Monash u
 - Use root `https://learning.monash.edu` for this Monash workflow. A per-command `MOODLE_BASE_URL=https://learning.monash.edu` avoids overwriting another site's configuration. If the user supplies a different Monash Moodle site, use that site.
 - Run the narrow requested read first. A successful read already establishes usable access; do not run login, doctor, status and account discovery before every due query.
 - For MCP, discover available tool schemas rather than assuming names or an endpoint. Remote MCP readiness and local CLI authentication are separate states.
+- When a known assessment page returns only a section index, an empty body, or missing linked attachments, use the authenticated browser to read that specific page if available. Expand its relevant accordion before treating it as empty. Do not repeat the same successful-but-incomplete connector query or switch the entire task to browser browsing. See the fallback procedure in [course-queries.md](references/course-queries.md).
 - On access failure or repeated Security prompts, read [access.md](references/access.md). Do not repeatedly switch methods when they are failing on the same expired session.
 
 ## Resolve the question
@@ -32,6 +33,8 @@ Read [course-queries.md](references/course-queries.md) for the matching workflow
 | Course or activity detail | `moodle UNIT --json` or `moodle UNIT "TASK" --json` |
 
 `UNIT` and `TASK` are placeholders for resolved references. Quote names and URLs. Specify the Monash base URL per command when the configured site is not established.
+
+For deadlines, retain still-open quizzes and externally completed exercises as candidates even when a future calendar query omits them. Check the scoped completeness triggers in [course-queries.md](references/course-queries.md); never equate a calendar result with a complete task list.
 
 ## Evidence and reporting
 
