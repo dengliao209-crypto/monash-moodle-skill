@@ -16,6 +16,19 @@ Report unit, assessment name, absolute deadline with timezone, available submiss
 
 If no items are returned, say “在本次查询的未来 14 天内未查到截止项目”, not “没有作业”. For a full assessment schedule or a named task absent from due, inspect course assessment sections and announcements as well. A future-window query does not establish that there are no overdue tasks.
 
+### Scoped completeness checks
+
+Keep the common path short: read the requested window first, then inspect details only where the returned evidence warrants it.
+
+- If the result identifies an event as `open`, report it as an opening, not a deadline. Read the activity to find its closing time. If only the title states a deadline, label it “title states”; do not invent a structured closing timestamp or year.
+- An opening event may disappear from future-window results after the quiz opens. If a previously observed quiz remains a plausible outstanding task within the requested window, check its current item even when absent from `due`. If no prior candidates are available, use the current relevant teaching section or assessment overview to look for open quizzes when the calendar contains only openings or appears incomplete. Avoid crawling every past course section for each routine check.
+- A title is supporting evidence, not a replacement for conflicting activity settings. Show the discrepancy and prefer an explicit current closing setting; preserve any staff extension notice and its date.
+- “Does not require online submission” means no upload is needed on that Moodle page. It does not mean completed, optional, or ungraded externally. Follow a visible MyLab/Pearson link only as needed and within available access; otherwise mark completion as unknown on the external platform.
+- A practice activity's closing time may be later than the real exam. Keep practice availability separate from the verified personal exam timetable. Do not infer a formal deadline from a guessed exam date.
+- Deduplicate by activity URL/id, preserving distinct opening, deadline and cut-off events. Keep submitted items separate from tasks requiring action. Missing attempt/submission status remains unknown.
+
+For each reported candidate, preserve the date source (activity setting, calendar event, title or staff post), the submission/attempt evidence, and the link. Expose those distinctions where they change the user's next action; a compact routine answer need not print every internal field.
+
 ## Grades and mid-semester results
 
 ```bash
@@ -42,6 +55,15 @@ Search results identify sources; read the matched page, staff post or document b
 Extract the requested information, usually: format, duration, weighting, hurdle/pass conditions, covered topics, permitted materials/calculator, delivery platform/location and any stated arrival or check-in instructions. Separate assessment duration from the time window in which it can be taken.
 
 If Moodle points to a separate personal exam timetable, follow that authenticated source only through available authorized access. Do not infer the personal exam date, venue, special arrangements or permitted materials from a generic unit guide. Mark missing fields as unverified. For conflicting staff sources, show the conflict and dates; use an explicit later correction when one exists.
+
+### Incomplete page or attachment fallback
+
+1. If a known assessment page is indexed but its body is missing, inspect that exact page in an authenticated browser and expand the relevant exam/assessment accordion. Use returned links, not guessed activity IDs. A section number and a section database ID may be different; use the displayed URL or the connector's documented selector.
+2. If the file reader cannot resolve a visible attachment, try the actual link through the browser's supported download mechanism once. A blocked or unavailable link remains inaccessible; do not bypass browser security warnings or treat a failed download as a read document.
+3. Read current staff replies when checking forum evidence. A student asking “Can we bring a formula sheet?” with no reply is not permission. Distinguish a practice paper's structure from confirmed formal exam structure.
+4. Stop recovery when sign-in/MFA requires the user's interaction or the same source remains inaccessible after the targeted fallback. Continue other accessible sources, then report the exact remaining gap and the source link. Do not claim a guide was read from its title or search listing.
+
+If using a prior check as context, identify it as prior evidence, not a freshly verified personal timetable. Keep source-specific timestamps and legacy filename concerns visible until a current staff statement resolves them.
 
 ## Attendance
 
